@@ -38,8 +38,8 @@
 		</a></li>
 		<li>
 			<ol type="1">
-				<li><a href="https://www.google.com" title="List">Google</a></li>
-				<li><a href="https://www.youtube.com" title="List">Youtube</a></li>
+				<li><a href="https://www.google.com" title="Google">Google</a></li>
+				<li><a href="https://www.youtube.com" title="Youtube">Youtube</a></li>
 			</ol>
 		</li>
 		<li>
@@ -74,7 +74,7 @@
     <br>
 
     <label>Favorite PL:<br>
-    	<select name="field-pl" multiple="multiple">
+    	<select name="field-pl[]" multiple="multiple">
 			<option value="pascal">Pascal</option>
 			<option value="c">C</option>
 			<option value="cpp">C++</option>
@@ -90,7 +90,7 @@
     </label><br>
 
     <label>BIO:<br>
-		<textarea></textarea>
+		<textarea name="field-bio"></textarea>
     </label><br>
 
     <label>Accept
