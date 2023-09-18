@@ -102,7 +102,7 @@ footer.section {
 }
 
 #table td {
-	background-color: #c4b4a1;
+/*	background-color: #c4b4a1;*/
 	color: black;
 	padding: 10px;
 	border-color: #c4b4a1;
@@ -110,12 +110,12 @@ footer.section {
 	max-width: 400px;
 }
 
-tbody tr:nth-child(odd) {
-	background-color: #C9E4F6;
+#table tbody tr:nth-child(odd) {
+	background-color: #c4b4a1;
 }
 
-tbody tr:nth-child(even) {
-	background-color: #C9E4F6;
+#table tbody tr:nth-child(even) {
+	background-color: #a39584;
 }
 
 #form input, select, textarea {
