@@ -1,0 +1,153 @@
+* {
+	font-size: 24pt;
+	font-family: monospace;
+	scroll-behavior: smooth;
+	scroll-margin-top: 200px;
+}
+
+::selection {
+	color: black;
+	background-color: #c4b4a1;
+}
+
+body {
+	background-color: #0f0f0f;
+	letter-spacing: 1px;
+	font-weight: 100;
+}
+
+#logo {
+	mix-blend-mode: multiply;
+	float: left;
+	margin-right: 40px;
+	border: 0;
+	padding: 0;
+}
+
+#navi {
+	margin: 0;
+	padding: 10px;
+	border: 10px solid;
+	border-radius: 20px;
+	border-color: #0f0f0f;
+	width: calc(100svw - 65px);
+	height: 150px;
+	background-color: #c4b4a1;
+	position: sticky;
+	top: 10px;
+}
+
+#fast-links {
+	position: relative;
+	text-align: center;
+}
+
+#fast-links div {
+	display: inline-block;
+	min-height: 20px;
+}
+
+#fast-links div a {
+	text-decoration: none;
+	color: white;
+	padding: 5px;
+}
+
+nav {
+	float: right;
+	padding: 5px;
+	background-color: #272727;
+	border-radius: 10px;
+	border: 5px;
+}
+
+h1 {
+	clear: right;
+	font-size: 40pt;
+	
+}
+
+.section {
+	margin: 40px 20px;
+	padding: 20px;
+	border: 2px solid;
+	border-radius: 20px;
+	border-color: #c4b4a1;
+	width: max-content;
+	background-color: #272727;
+}
+
+.section * {
+	margin: 10px;
+	color: white;
+}
+
+footer.section {
+	width: auto;
+	text-align: right;
+	color: white;
+}
+
+#ref-links {
+	clear: both;
+}
+
+#table table * {
+	border: 1px solid;
+	border-radius: 10px;
+	padding: 5px;
+	text-align: center;
+}
+
+#table td {
+	background-color: #c4b4a1;
+	color: black;
+	padding: 10px;
+	border-color: #c4b4a1;
+	font-size: 20pt;
+	max-width: 400px;
+}
+
+tbody tr:nth-child(odd) {
+	background-color: #C9E4F6;
+}
+
+tbody tr:nth-child(even) {
+	background-color: #C9E4F6;
+}
+
+#form input, select, textarea {
+	border: 1px solid #c4b4a1;
+	border-radius: 4px;
+	padding: 5px;
+	background-color: #272727;
+	outline: none;
+}
+
+#form input[type="radio"] {
+	font: inherit;
+	color: currentColor;
+	width: 0.75em;
+	height: 0.75em;
+	border: 0.15em solid currentColor;
+	border-radius: 50%;
+}
+
+#form option {
+	border-radius: 4px;
+}
+
+#form option:checked {
+	color: black;
+	background-color: #c4b4a1;
+}
+
+#form input[type="checkbox"] {
+	width: 0.75em;
+	height: 0.75em;
+}
+
+#form input[type="submit"]:hover {
+	color: black;
+	background-color: #c4b4a1;
+}
