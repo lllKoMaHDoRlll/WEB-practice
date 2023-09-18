@@ -3,6 +3,7 @@
 	font-family: monospace;
 	scroll-behavior: smooth;
 	scroll-margin-top: 200px;
+	max-width: 100svw;
 }
 
 ::selection {
@@ -73,6 +74,7 @@ h1 {
 	border: 2px solid;
 	border-radius: 20px;
 	border-color: #c4b4a1;
+	max-width: calc(100svw - 100px);
 	width: max-content;
 	background-color: #272727;
 }
