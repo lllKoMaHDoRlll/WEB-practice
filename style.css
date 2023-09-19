@@ -1,155 +1,191 @@
 * {
-	font-size: 24pt;
-	font-family: monospace;
-	scroll-behavior: smooth;
-	scroll-margin-top: 200px;
-	max-width: 100svw;
+    font-size: 1.05em;
+    font-family: monospace;
+    scroll-behavior: smooth;
+    scroll-margin-top: 200px;
+    max-width: 100svw;
 }
 
 ::selection {
-	color: black;
-	background-color: #c4b4a1;
+    color: black;
+    background-color: #c4b4a1;
 }
 
 body {
-	background-color: #0f0f0f;
-	letter-spacing: 1px;
-	font-weight: 100;
+    background: url("./images/background_3.jpg") no-repeat;
+    background-position: center;
+    background-size: cover;
+    letter-spacing: 1px;
+    font-weight: 100;
 }
 
 #logo {
-	mix-blend-mode: multiply;
-	float: left;
-	margin-right: 40px;
-	border: 0;
-	padding: 0;
+    mix-blend-mode: multiply;
+    float: left;
+    margin-right: 40px;
+    margin-top: -10px;
+    border: 0;
+    padding: 0;
+    height: calc(11vh + 30px);
+    display:inline;
+}
+
+header h1 {
+    margin: 10px 0 0 0;
+    padding: 5px;
+    border-radius: 30px;
+    display: inline-block;
+    transition: 1.5s;
+}
+
+header h1:hover {
+    background: #272727;
+    color: #fff;
 }
 
 #navi {
-	margin: 0;
-	padding: 10px;
-	border: 10px solid;
-	border-radius: 20px;
-	border-color: #0f0f0f;
-	width: calc(100svw - 65px);
-	height: 150px;
-	background-color: #c4b4a1;
-	position: sticky;
-	top: 10px;
+    margin: 0;
+    padding: 10px;
+    border: 10px solid;
+    border-radius: 20px;
+    border-color: #0f0f0f;
+    width: calc(100svw - 65px);
+    height: 11vh;
+    background-color: #c4b4a1;
+    position: sticky;
+    top: 10px;
+    z-index: 1;
 }
 
 #fast-links {
-	position: relative;
-	text-align: center;
+    position: relative;
+    text-align: center;
 }
 
 #fast-links div {
-	display: inline-block;
-	min-height: 20px;
+    display: inline-block;
+    min-height: 20px;
 }
 
 #fast-links div a {
-	text-decoration: none;
-	color: white;
-	padding: 5px;
+    text-decoration: none;
+    color: white;
+    margin: 2px;
+    padding: 3px;
+    border-radius: 12px;
+    transition: .5s;
+}
+
+#fast-links div a:hover {
+    background: #c4b4a1;
+    color: #000;
 }
 
 nav {
-	float: right;
-	padding: 5px;
-	background-color: #272727;
-	border-radius: 10px;
-	border: 5px;
+    display: inline;
+    float: right;
+    padding: 5px;
+    background-color: #272727;
+    border-radius: 10px;
+    border: 5px;
+    margin: 0;
 }
 
 h1 {
-	clear: right;
-	font-size: 40pt;
-	
+    clear: right;
+    font-size: 4em;    
 }
 
 .section {
-	margin: 40px 20px;
-	padding: 20px;
-	border: 2px solid;
-	border-radius: 20px;
-	border-color: #c4b4a1;
-	max-width: calc(100svw - 100px);
-	width: max-content;
-	background-color: #272727;
+    margin: 40px 20px;
+    padding: 20px;
+    border: 2px solid;
+    border-radius: 20px;
+    border-color: #c4b4a1;
+    max-width: calc(100svw - 100px);
+    width: max-content;
+/*    background-color: #272727;*/
+    background: transparent;
+    backdrop-filter: blur(20px);
 }
 
 .section * {
-	margin: 10px;
-	color: white;
+    margin: 10px;
+    color: white;
 }
 
 footer.section {
-	width: auto;
-	text-align: right;
-	color: white;
+    width: auto;
+    text-align: right;
+    color: white;
 }
 
 #ref-links {
-	clear: both;
+    clear: both;
 }
 
 #table table * {
-	border: 1px solid;
-	border-radius: 10px;
-	padding: 5px;
-	text-align: center;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
 }
 
 #table td {
-/*	background-color: #c4b4a1;*/
-	color: black;
-	padding: 10px;
-	border-color: #c4b4a1;
-	font-size: 20pt;
-	max-width: 400px;
+/*  background-color: #c4b4a1;*/
+    color: black;
+    padding: 10px;
+    border-color: #c4b4a1;
+    font-size: 1em;
+    max-width: 400px;
+    transition: .5s;
+}
+
+#table td:hover {
+    background: #272727;
+    color: #fff;
 }
 
 #table tbody tr:nth-child(odd) {
-	background-color: #c4b4a1;
+    background-color: #c4b4a1;
 }
 
 #table tbody tr:nth-child(even) {
-	background-color: #a39584;
+    background-color: #a39584;
 }
 
 #form input, select, textarea {
-	border: 1px solid #c4b4a1;
-	border-radius: 4px;
-	padding: 5px;
-	background-color: #272727;
-	outline: none;
+    border: 1px solid #c4b4a1;
+    border-radius: 4px;
+    padding: 5px;
+    background-color: #272727;
+    outline: none;
 }
 
 #form input[type="radio"] {
-	font: inherit;
-	color: currentColor;
-	width: 0.75em;
-	height: 0.75em;
-	border: 0.15em solid currentColor;
-	border-radius: 50%;
+    font: inherit;
+    color: currentColor;
+    width: 0.75em;
+    height: 0.75em;
+    border: 0.15em solid currentColor;
+    border-radius: 50%;
 }
 
 #form option {
-	border-radius: 4px;
+    border-radius: 4px;
 }
 
 #form option:checked {
-	color: black;
-	background-color: #c4b4a1;
+    color: black;
+    background-color: #c4b4a1;
 }
 
 #form input[type="checkbox"] {
-	width: 0.75em;
-	height: 0.75em;
+    width: 0.75em;
+    height: 0.75em;
 }
 
 #form input[type="submit"]:hover {
-	color: black;
-	background-color: #c4b4a1;
+    color: black;
+    background-color: #c4b4a1;
 }
