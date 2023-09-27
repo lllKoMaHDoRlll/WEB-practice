@@ -21,6 +21,7 @@
 
 body {
     background-image: url("./images/background_3.jpg");
+    background-color: #272727;
     background-position: center;
     background-size: cover;
 }
@@ -279,7 +280,7 @@ footer {
     padding: 10px;
     border: 1px solid #FFF;
     border-radius: 20px;
-    text-align: right;
+    text-align: left;
     color: #FFF;
     order: 4;
     max-width: 100%;
