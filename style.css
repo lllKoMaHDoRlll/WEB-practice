@@ -124,12 +124,6 @@ nav li a:hover {
     order: 1;
 }
 
-@media screen and (width >= 800px) {
-    #table {
-        order: 2;
-    }
-}
-
 #table h2 {
     color: #FFF;
     letter-spacing: 1px;
@@ -181,7 +175,15 @@ nav li a:hover {
     order: 2;
 }
 
-@media screen and (width > 800px) {
+@media screen and (width >= 800px) {
+    #table {
+        order: 2;
+    }
+
+    #content {
+        max-width: 960px;
+    }
+
     #links {
         order: 1;
     }
