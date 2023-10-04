@@ -20,7 +20,6 @@
 }
 
 body {
-    background-image: url("./images/background_3.jpg");
     background-color: #272727;
     background-position: center;
     background-size: cover;
@@ -59,61 +58,64 @@ header {
     flex-direction: column;
 }
 
-nav {
-    margin: 10px;
-    border-radius: 20px;
-    padding: 3px;
-    order: -1;
+#site-navigation {
+    width: 100%;
+    margin: auto;
 }
 
-nav ul {
+#navigation-list {
+    margin: 4px;
+    margin-bottom: 0;
+    list-style: none;
     display: flex;
     flex-direction: column;
-    list-style: none;
-    width: 100%;
+}
+
+#navigation-list li a {
+    margin: 0 auto;
+    text-decoration: none;
+    color: #000;
+    transition: .2s ease-out;
+    padding: 10px;
+    display: block;
+}
+
+#navigation-list li {
+    background-color: var(--acc-color);
+    transition: .2s ease-out;
+    display: inline-block;
     text-align: center;
 }
 
-nav ul li {
-    background-color: var(--acc-color);
+#navigation-list li:nth-child(1) {
     border: 3px solid #000;
-    transition: .5s;
-    margin: -1px;
-}
-
-nav li:hover {
-    background-color: var(--bg-color);
-}
-
-nav ul li:nth-child(1) {
-    border: 3px solid #000;
+    border-bottom: 0;
     border-radius: 20px 20px 0 0;
-    border-bottom: 0;
 }
 
-nav ul li:nth-child(2) {
-    border-top: 0;
-    border-bottom: 0;
-}
-
-nav ul li:nth-child(3) {
+#navigation-list li:nth-child(2) {
     border: 3px solid #000;
-    border-radius: 0px 0px 20px 20px;
+    border-bottom: 0;
     border-top: 0;
 }
 
-nav li a {
-    display: block;
-    color: #000;
-    text-decoration: none;
-    width: 100%;
-    transition: .5s;
+#navigation-list li:nth-child(3) {
+    border: 3px solid #000;
+    border-top: 0;
+    border-radius: 0 0 20px 20px;
 }
 
-nav li a:hover {
-    color: #FFF;
-    padding: 10px;
+#navigation-list li:hover {
+    background-color: var(--dark-color);
 }
+
+#navigation-list li a:hover {
+    margin: 10px 0;
+    color: #FFF;
+    font-weight: 500;
+}
+
+
 
 #table {
     background: transparent;
@@ -174,20 +176,6 @@ nav li a:hover {
     border: 1px solid #FFF;
     border-radius: 20px;
     order: 2;
-}
-
-@media screen and (width >= 800px) {
-    #table {
-        order: 2;
-    }
-
-    #content {
-        max-width: 960px;
-    }
-
-    #links {
-        order: 1;
-    }
 }
 
 #links h2 {
@@ -280,8 +268,57 @@ footer {
     padding: 10px;
     border: 1px solid #FFF;
     border-radius: 20px;
-    text-align: left;
+    text-align: right;
     color: #FFF;
     order: 4;
     max-width: 100%;
+}
+
+
+@media screen and (width >= 800px) {
+    #table {
+        order: 2;
+    }
+
+    #content {
+        max-width: 960px;
+    }
+
+    #links {
+        order: 1;
+    }
+
+    #navigation-list {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    #navigation-list li a {
+        padding: 10px 30px;
+        text-align: center;
+    }
+
+    #navigation-list li:nth-child(1) {
+        border: 3px solid #000;
+        border-right: 0;
+        border-radius: 20px 0 0 20px;
+    }
+    
+    #navigation-list li:nth-child(2) {
+        border: 3px solid #000;
+        border-left: 0;
+        border-right: 0;
+    }
+    
+    #navigation-list li:nth-child(3) {
+        border: 3px solid #000;
+        border-left: 0;
+        border-radius: 0 20px 20px 0;
+    }
+
+    #navigation-list li a:hover {
+        margin: 0 10px;
+        color: #FFF;
+        font-weight: 500;
+    }
 }
