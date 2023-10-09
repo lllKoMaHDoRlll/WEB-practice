@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,500;1,500&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
     font-family: 'poppins', sans-serif;
-    scroll-behavior: smooth;
-    scroll-margin-top: 10svh;
+    scroll-margin-top: calc(20vw * 0.9);
+}
+
+:root {
+    --dark-color: #272727;
+    --acc-color: #c4b4a1;
 }
 
 ::selection {
@@ -14,77 +15,50 @@
     background-color: var(--acc-color);
 }
 
-:root {
-    --bg-color: #272727;
-    --acc-color: #c4b4a1;
-}
-
 body {
-    background-color: #272727;
+    background-image: url(./images/background.jpg);
     background-position: center;
     background-size: cover;
 }
 
 header {
-    margin: 5px;
-    background-color: var(--acc-color);
-    display: flex;
-    height: min-content;
-    justify-content: flex-start;
-    align-items: flex-start;
-    border: 5px solid #000;
-    border-radius: 20px;
-    padding: 0 5px;
     position: sticky;
-    top: 5px;
+    top: 4px;
+    background-color: var(--acc-color);
+    border: 3px solid #000;
+    border-radius: 20px;
     z-index: 1;
 }
 
 #logo {
-    height: min(15vh, 15vw);
     mix-blend-mode: multiply;
-    margin-right: 10px;
+    width: 20vw;
 }
 
 #name {
-    letter-spacing: 1px;
-    font-size: 1.4em;
-    align-self: center;
-}
-
-#content {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
+    font-size: 8vw;
+    font-weight: 400;
 }
 
 #site-navigation {
     width: 100%;
-    margin: auto;
 }
 
 #navigation-list {
     margin: 4px;
-    margin-bottom: 0;
-    list-style: none;
-    display: flex;
     flex-direction: column;
 }
 
 #navigation-list li a {
-    margin: 0 auto;
     text-decoration: none;
     color: #000;
     transition: .2s ease-out;
-    padding: 10px;
-    display: block;
+    padding: 3px;
 }
 
 #navigation-list li {
     background-color: var(--acc-color);
     transition: .2s ease-out;
-    display: inline-block;
-    text-align: center;
 }
 
 #navigation-list li:nth-child(1) {
@@ -115,21 +89,21 @@ header {
     font-weight: 500;
 }
 
-
-
-#table {
-    background: transparent;
-    backdrop-filter: blur(15px);
-    margin: 10px;
+#content > div {
+    margin: 4px;
     padding: 10px;
-    border: 1px solid #FFF;
+    background-color: transparent;
+    backdrop-filter: blur(20px);
+    border: 3px solid #FFF;
     border-radius: 20px;
-    order: 1;
 }
 
-#table h2 {
+h2 {
     color: #FFF;
-    letter-spacing: 1px;
+}
+
+table {
+    border-collapse: separate;
 }
 
 #table table thead tr th {
@@ -140,15 +114,8 @@ header {
     font-weight: 500;
 }
 
-#table table tbody tr:nth-child(odd) td {
-    background-color: var(--acc-color);
-}
-
-#table table tbody tr:nth-child(even) td{
-    background-color: #887d6f;
-}
-
 #table table tbody tr td {
+    border: 1px solid #000;
     border-radius: 10px;
     padding: 5px;
     font-size: .9em;
@@ -157,30 +124,28 @@ header {
     transition: .5s;
 }
 
+#table table tbody tr:nth-child(odd) td {
+    background-color: var(--acc-color);
+}
 
+#table table tbody tr:nth-child(even) td{
+    background-color: #887d6f;
+}
 
 #table table tbody tr td:hover {
     border-radius: 10px;
     padding: 5px;
     font-size: .9em;
     text-align: center;
-    background-color: var(--bg-color);
+    background-color: var(--dark-color);
     color: #FFF
 }
 
 #links {
-    background: transparent;
-    backdrop-filter: blur(20px);
     margin: 10px;
     padding: 10px;
     border: 1px solid #FFF;
     border-radius: 20px;
-    order: 2;
-}
-
-#links h2 {
-    color: white;
-    letter-spacing: 1px;
 }
 
 #links ul {
@@ -207,85 +172,42 @@ header {
     list-style: none;
 }
 
-#form {
-    background: transparent;
-    backdrop-filter: blur(20px);
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #FFF;
-    border-radius: 20px;
-    order: 3;
+#form input, #form select, #form textarea {
+    background-color: var(--dark-color);
+    color: #808080;
 }
 
-#form h2 {
-    color: #FFF;
-    letter-spacing: 1px;
+#form input[type="date"]::-webkit-calendar-picker-indicator{
+    filter: invert(0.6);
 }
 
-#form * {
-    color: #FFF;
+#form input::placeholder {
+    color: #808080;
 }
 
-#form input, select, textarea {
-    margin: 5px;
-    border: 1px solid #c4b4a1;
-    border-radius: 4px;
-    padding: 5px;
-    background-color: #272727;
-    outline: none;
-}
-
-#form input[type="radio"] {
-    font: inherit;
-    color: currentColor;
-    width: 0.75em;
-    height: 0.75em;
-    border: 0.15em solid currentColor;
-    border-radius: 50%;
-    margin-right: 5px;
-}
-
-#form option {
-    width: 100px;
-    margin: 5px;
-    border-radius: 4px;
-}
-
-#form option:checked {
-    color: black;
-    background-color: #c4b4a1;
-}
-
-#form input[type="submit"]:hover {
-    color: black;
-    background-color: #c4b4a1;
-}
 
 footer {
-    background: transparent;
-    backdrop-filter: blur(20px);
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #FFF;
-    border-radius: 20px;
-    text-align: right;
     color: #FFF;
-    order: 4;
-    max-width: 100%;
+    padding: .5rem;
+    border: 3px solid #FFF;
+    border-radius: 20px;
+    background-color: transparent;
+    backdrop-filter: blur(20px);
 }
 
 
-@media screen and (width >= 800px) {
-    #table {
-        order: 2;
+@media screen and (width >= 992px) {
+    #logo {
+        width: 10vw;
     }
 
-    #content {
-        max-width: 960px;
+    #name {
+        font-size: 4vw;
     }
 
-    #links {
-        order: 1;
+    #content div {
+        max-width: 980px;
+        margin: 10px auto;
     }
 
     #navigation-list {
@@ -295,7 +217,6 @@ footer {
 
     #navigation-list li a {
         padding: 10px 30px;
-        text-align: center;
     }
 
     #navigation-list li:nth-child(1) {
