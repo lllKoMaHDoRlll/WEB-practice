@@ -16,18 +16,15 @@
 }
 
 body {
-    background-image: url(./images/background_3.jpg);
+    background-image: url(./images/background.jpg);
     background-position: center;
     background-size: cover;
 }
 
 header {
-    position: sticky;
-    top: 4px;
     background-color: var(--acc-color);
     border: 3px solid #000;
     border-radius: 20px;
-    z-index: 1;
 }
 
 #logo {
@@ -40,20 +37,8 @@ header {
     font-weight: 400;
 }
 
-#site-navigation {
-    width: 100%;
-}
-
-#navigation-list {
-    margin: 4px;
-    flex-direction: column;
-}
-
 #navigation-list li a {
-    text-decoration: none;
-    color: #000;
     transition: .2s ease-out;
-    padding: 3px;
 }
 
 #navigation-list li {
@@ -85,7 +70,7 @@ header {
 
 #navigation-list li a:hover {
     margin: 10px 0;
-    color: #FFF;
+    color: #FFF !important;
     font-weight: 500;
 }
 
@@ -210,13 +195,9 @@ footer {
         margin: 10px auto;
     }
 
-    #navigation-list {
-        flex-direction: row;
-        justify-content: center;
-    }
 
     #navigation-list li a {
-        padding: 10px 30px;
+        padding: 10px 30px !important;
     }
 
     #navigation-list li:nth-child(1) {
