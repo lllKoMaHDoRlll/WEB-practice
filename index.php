@@ -15,7 +15,7 @@
     <div id="content">
         <section id="form">
             <h2>Form</h2>
-            <form action="https://www.submit_somewhere.com" method="POST">          
+            <form action=<?php echo "/web-2-task-3/form_handler.php"?> method="POST">          
                 <label>Name:
                     <input name="field-name" placeholder="Your name" type="text">
                 </label>
