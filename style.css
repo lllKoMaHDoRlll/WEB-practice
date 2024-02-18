@@ -21,6 +21,7 @@
 
 body {
     background-color: #272727;
+    background-image: url("/images/background.jpg");
     background-position: center;
     background-size: cover;
 }
@@ -56,6 +57,7 @@ header {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    align-items: center;
     max-width: 960px;
 }
 
@@ -63,16 +65,33 @@ header {
 #form {
     background: transparent;
     backdrop-filter: blur(20px);
-    margin: 10px;
+    margin: 10px auto;
     padding: 10px;
-    border: 1px solid #FFF;
+    border: 3px solid #FFF;
     border-radius: 20px;
     order: 3;
+    width: max-content;
+    min-width: 30dvw;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form > label {
+    display: flex;
+    flex-direction: column;
+}
+
+#chkbox-label, .radio-gender {
+    flex-direction: row;
 }
 
 #form h2 {
+    font-size: 22pt;
     color: #FFF;
-    letter-spacing: 1px;
+    font-weight: 500;
 }
 
 #form * {
@@ -81,11 +100,12 @@ header {
 
 #form input, select, textarea {
     margin: 5px;
-    border: 1px solid #c4b4a1;
+    border: 1px solid #fff;
     border-radius: 4px;
     padding: 5px;
     background-color: #272727;
     outline: none;
+    color: #808080;
 }
 
 #form input[type="radio"] {

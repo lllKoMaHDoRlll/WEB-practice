@@ -18,30 +18,29 @@
             <form action="https://www.submit_somewhere.com" method="POST">          
                 <label>Name:
                     <input name="field-name" placeholder="Your name" type="text">
-                </label><br>
+                </label>
                    
                 <label>Phone:
                     <input name="field-phone" placeholder="Your phone number" type="tel">
-                </label><br>
+                </label>
                 
                 <label>Email:
                     <input name="field-email" placeholder="Your email adress" type="email">
-                </label><br>
+                </label>
     
                 <label>Date of birth:
                     <input name="field-date" type="date">
-                </label><br>
+                </label>
     
                 <p>Gender:</p>
-                    <label>
+                    <label class="radio-gender">
                         <input name="field-gender" type="radio" value="male">Male
                     </label>
-                    <label>
+                    <label class="radio-gender">
                     <input name="field-gender" type="radio" value="female">Female
                     </label>
-                <br>
     
-                <label>Favorite PL:<br>
+                <label>Favorite PL:
                     <select name="field-pl[]" multiple="multiple">
                         <option value="pascal">Pascal</option>
                         <option value="c">C</option>
@@ -55,15 +54,13 @@
                         <option value="prolog">Prolog</option>
                         <option value="scala">Scala</option>
                     </select>
-                </label><br>
+                </label>
     
-                <label>BIO:<br>
+                <label>BIO:
                     <textarea name="field-bio"></textarea>
-                </label><br>
+                </label>
     
-                <label>Accept
-                    <input type="checkbox" name="check-accept">
-                </label><br>
+                <label id="chkbox-label"><input type="checkbox" name="check-accept"> Accept</label>
     
                 <label class="submit-button"><input type="submit" name="button-submit"></label>
             </form>
