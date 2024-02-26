@@ -1,21 +1,18 @@
 <?php
 
 function on_get() {
-    if(empty($_GET["form_save"])) {
-        include("./index_page.html");
-    }
-    else {
+    if(!empty($_GET["form_save"])) {
         echo "<script>alert ('Form was sent.')</script>";
-        return;
     }
+    include("./index_page.html");
 }
 
 function on_post() {
-    echo "Nothing there";
+    include("./form_handler.php");
 }
 
 switch($_SERVER["REQUEST_METHOD"])
 {
-    case "GET": on_get();
-    case "POST": on_post();
+    case "GET": on_get(); break;
+    case "POST": on_post(); break;
 }

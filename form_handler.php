@@ -15,3 +15,5 @@ echo $_POST["field-bio"];
 echo $_POST["check-accept"];
 echo $_POST["button-submit"];
 
+header("Location: ?form_save=1");
+
