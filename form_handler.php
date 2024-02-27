@@ -4,8 +4,9 @@ header('Content-Type: text/html; charset=UTF-8');
 
 $STATUS = 1;
 
-function validate_fields () {
-    
+function validate_fields()
+{
+
     if (empty($_POST["field-name"]) || strlen($_POST["field-name"]) > 150 || !preg_match("/^[\p{Cyrillic}a-zA-Z-' ]*$/u", $_POST["field-name"])) {
         return -1;
     }
@@ -30,14 +31,16 @@ function validate_fields () {
     return 1;
 }
 
-function connect_to_db () {
+function connect_to_db()
+{
     $user = 'u67423';
     $pass = '2585011';
     $db = new PDO('mysql:host=localhost;dbname=test', $user, $pass, [PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
     return $db;
 }
 
-function save_to_db ($db) {
+function save_to_db($db)
+{
     try {
         $name = $_POST["field-name"];
         $phone = $_POST["field-phone"];
@@ -48,7 +51,7 @@ function save_to_db ($db) {
     } catch (Exception $e) {
         return -10;
     }
-    
+
     try {
         $db->beginTransaction();
         $stmt = $db->prepare("INSERT INTO application 
@@ -63,7 +66,7 @@ function save_to_db ($db) {
         $stmt->execute();
 
         $submition_rowid = $db->lastInsertId();
-        foreach($_POST["field-pl"] as $fpl) {
+        foreach ($_POST["field-pl"] as $fpl) {
             $stmt = $db->prepare(sprintf("INSERT INTO fpls (parent_id, fpl) VALUES (%s, :fpl);", $submition_rowid));
             $stmt->bindParam('fpl', $fpl);
             $stmt->execute();
