@@ -1,5 +1,7 @@
 <?php
 
+header('Content-Type: text/html; charset=UTF-8');
+
 $STATUS = 1;
 
 function validate_fields () {
@@ -28,10 +30,6 @@ function validate_fields () {
     return 1;
 }
 
-function prepare_data () {
-    return;
-}
-
 function connect_to_db () {
     $user = 'u67423';
     $pass = '2585011';
@@ -40,48 +38,47 @@ function connect_to_db () {
 }
 
 function save_to_db ($db) {
-    $name = $_POST["field-name"];
-    $phone = $_POST["field-phone"];
-    $email = $_POST["field-email"];
-    $bdate = $_POST["field-date"];
-    $gender = $_POST["field-gender"] == "male" ? '1' : '0';
-    $fpl = implode(",", $_POST["field-pl"]);
-    $bio = empty($_POST["field-bio"]) ? '' : $_POST["field-bio"];
-
-    print($name);
-    print("|");
-    print($phone);
-    print("|");
-    print($email);
-    print("|");
-    print($bdate);
-    print("|");
-    print($gender);
-    print("|");
-    print($fpl);
-    print("|");
-    print($bio);
-    print("|");
-
-    $stmt = $db->prepare("INSERT INTO application (name, phone, email, bdate, gender, fpl, bio) VALUES (:name, :phone, :email, :bdate, :gender, :fpl, :bio);");
-    $stmt->bindParam('name', $name);
-    $stmt->bindParam('phone', $phone);
-    $stmt->bindParam('email', $email);
-    $stmt->bindParam('bdate', $bdate);
-    $stmt->bindParam('gender', $gender);
-    $stmt->bindParam('fpl', $fpl);
-    $stmt->bindParam('bio', $bio);
-    $stmt->execute();
+    try {
+        $name = $_POST["field-name"];
+        $phone = $_POST["field-phone"];
+        $email = $_POST["field-email"];
+        $bdate = $_POST["field-date"];
+        $gender = $_POST["field-gender"] == "male" ? '1' : '0';
+        $fpl = implode(",", $_POST["field-pl"]);
+        $bio = empty($_POST["field-bio"]) ? '' : $_POST["field-bio"];
+    } catch (Exception $e) {
+        return -10;
+    }
+    
+    try {
+        $stmt = $db->prepare("INSERT INTO application (name, phone, email, bdate, gender, fpl, bio) VALUES (:name, :phone, :email, :bdate, :gender, :fpl, :bio);");
+        $stmt->bindParam('name', $name);
+        $stmt->bindParam('phone', $phone);
+        $stmt->bindParam('email', $email);
+        $stmt->bindParam('bdate', $bdate);
+        $stmt->bindParam('gender', $gender);
+        $stmt->bindParam('fpl', $fpl);
+        $stmt->bindParam('bio', $bio);
+        $stmt->execute();
+    } catch (Exception $e) {
+        return -11;
+    }
+    return 1;
 }
 
-if (validate_fields() != 1) {
-    $STATUS = validate_fields();
+$validation_result = validate_fields();
+if ($validation_result != 1) {
+    $STATUS = $validation_result;
+    header(sprintf("Location: ?form_save=%d", $STATUS));
+    exit();
 }
 
-print(implode("\n", $_POST));
-echo "<br>";
-save_to_db(connect_to_db());
+$saving_result = save_to_db(connect_to_db());
+if ($saving_result != 1) {
+    $STATUS = $saving_result;
+    header(sprintf("Location: ?form_save=%d", $STATUS));
+    exit();
+}
 
-
-//header(sprintf("Location: ?form_save=%d", $STATUS));
+header(sprintf("Location: ?form_save=%d", $STATUS));
 
