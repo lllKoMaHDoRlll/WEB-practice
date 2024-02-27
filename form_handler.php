@@ -44,22 +44,29 @@ function save_to_db ($db) {
         $email = $_POST["field-email"];
         $bdate = $_POST["field-date"];
         $gender = $_POST["field-gender"] == "male" ? '1' : '0';
-        $fpl = implode(",", $_POST["field-pl"]);
         $bio = empty($_POST["field-bio"]) ? '' : $_POST["field-bio"];
     } catch (Exception $e) {
         return -10;
     }
     
     try {
-        $stmt = $db->prepare("INSERT INTO application (name, phone, email, bdate, gender, fpl, bio) VALUES (:name, :phone, :email, :bdate, :gender, :fpl, :bio);");
+        $stmt = $db->prepare("INSERT INTO application 
+        (name, phone, email, bdate, gender, bio) 
+        VALUES (:name, :phone, :email, :bdate, :gender, :bio);");
         $stmt->bindParam('name', $name);
         $stmt->bindParam('phone', $phone);
         $stmt->bindParam('email', $email);
         $stmt->bindParam('bdate', $bdate);
         $stmt->bindParam('gender', $gender);
-        $stmt->bindParam('fpl', $fpl);
         $stmt->bindParam('bio', $bio);
         $stmt->execute();
+
+        $submition_rowid = $db->lastInsertId();
+        foreach($_POST["field-pl"] as $fpl) {
+            $stmt = $db->prepare(sprintf("INSERT INTO fpls (parent_id, fpl) VALUES (%s, :fpl);", $submition_rowid));
+            $stmt->bindParam('fpl', $fpl);
+            $stmt->execute();
+        }
     } catch (Exception $e) {
         return -11;
     }
