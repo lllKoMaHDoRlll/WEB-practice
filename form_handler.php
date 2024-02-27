@@ -50,6 +50,7 @@ function save_to_db ($db) {
     }
     
     try {
+        $db->beginTransaction();
         $stmt = $db->prepare("INSERT INTO application 
         (name, phone, email, bdate, gender, bio) 
         VALUES (:name, :phone, :email, :bdate, :gender, :bio);");
@@ -67,7 +68,10 @@ function save_to_db ($db) {
             $stmt->bindParam('fpl', $fpl);
             $stmt->execute();
         }
+
+        $db->commit();
     } catch (Exception $e) {
+        $db->rollback();
         return -11;
     }
     return 1;
