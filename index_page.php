@@ -15,7 +15,7 @@
     <div id="content">
         <section id="form">
             <h2>Form</h2>
-            <form action="/web-2-task-3/index.php" method="POST">          
+            <form action="/web-2-task-4/index.php" method="POST">          
                 <label>Name:
                     <input name="field-name" placeholder="Your name" type="text">
                 </label>
