@@ -18,18 +18,22 @@
             <form action="/web-2-task-4/index.php" method="POST">          
                 <label>Name:
                     <input name="field-name" placeholder="Your name" type="text">
+                    <span class="err_desk">Please fill name field correctly</span>
                 </label>
                    
                 <label>Phone:
                     <input name="field-phone" placeholder="Your phone number" type="tel">
+                    <span class="err_desk">Please fill phone field correctly</span>
                 </label>
                 
                 <label>Email:
                     <input name="field-email" placeholder="Your email adress" type="email">
+                    <span class="err_desk">Please fill email field correctly</span>
                 </label>
     
                 <label>Date of birth:
                     <input name="field-date" type="date">
+                    <span class="err_desk">Please fill birthday date field correctly</span>
                 </label>
     
                 <p>Gender:</p>
@@ -39,6 +43,7 @@
                     <label class="radio-gender">
                     <input name="field-gender" type="radio" value="female">Female
                     </label>
+                    <span class="err_desk">Please fill gender field correctly</span>
     
                 <label>Favorite PL:
                     <select name="field-pl[]" multiple="multiple">
@@ -54,13 +59,19 @@
                         <option value="prolog">Prolog</option>
                         <option value="scala">Scala</option>
                     </select>
+                    <span class="err_desk">Please fill fpl field correctly</span>
                 </label>
     
                 <label>BIO:
                     <textarea name="field-bio"></textarea>
+                    <span class="err_desk">Please fill bio field correctly</span>
                 </label>
     
-                <label id="chkbox-label"><input type="checkbox" name="check-accept" value="accepted"> Accept</label>
+                <label id="chkbox-label">
+                    <input type="checkbox" name="check-accept" value="accepted"> 
+                    Accept
+                    <span class="err_desk">Please accept Privacy Politics.</span>
+                </label>
     
                 <label class="submit-button"><input type="submit"></label>
             </form>
