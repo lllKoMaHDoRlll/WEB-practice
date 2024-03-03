@@ -19,7 +19,7 @@ function on_get()
     if (!empty($_GET["form_save"])) {
         echo sprintf("<script>alert ('%s')</script>", $STATUS_DESCRIPTION[$_GET["form_save"]]);
     }
-    include("./index_page.html");
+    include("./index_page.php");
 }
 
 function on_post()
