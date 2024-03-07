@@ -16,13 +16,13 @@ function validate_fields()
     if (empty($_POST["field-email"]) || !filter_var($_POST["field-email"], FILTER_VALIDATE_EMAIL)) {
         return -3;
     }
-    if (empty($_POST["field-date"])) {
+    if (empty($_POST["field-date"]) || !preg_match('/^\d{4}-\d{2}-\d{2}$/i', $_POST["field-date"])) {
         return -4;
     }
-    if (empty($_POST["field-gender"])) {
+    if (empty($_POST["field-gender"]) || !preg_match('/^\Qmale\E|\Qfemale\E$/i', $_POST["field-gender"])) {
         return -5;
     }
-    if (empty($_POST["field-pl"]) || count($_POST["field-pl"]) < 1) {
+    if (empty($_POST["field-pl"]) || count($_POST["field-pl"]) < 1 || !preg_match('/^((\Qpascal\E|\Qc\E|\Qcpp\E|\Qjs\E|\Qphp\E|\Qpython\E|\Qjava\E|\Qhaskel\E|\Qclojure\E|\Qprolog\E|\Qscala\E){1}[\,]{0,1})+$/i', $_POST["field-pl"])) {
         return -6;
     }
     if (empty($_POST["check-accept"]) || $_POST["check-accept"] != "accepted") {
