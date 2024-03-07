@@ -22,7 +22,7 @@ function validate_fields()
     if (empty($_POST["field-gender"]) || !preg_match('/^\Qmale\E|\Qfemale\E$/i', $_POST["field-gender"])) {
         return -5;
     }
-    if (empty($_POST["field-pl"]) || count($_POST["field-pl"]) < 1 || !preg_match('/^((\Qpascal\E|\Qc\E|\Qcpp\E|\Qjs\E|\Qphp\E|\Qpython\E|\Qjava\E|\Qhaskel\E|\Qclojure\E|\Qprolog\E|\Qscala\E){1}[\,]{0,1})+$/i', $_POST["field-pl"])) {
+    if (empty($_POST["field-pl"]) || count($_POST["field-pl"]) < 1 || !preg_match('/^((\Qpascal\E|\Qc\E|\Qcpp\E|\Qjs\E|\Qphp\E|\Qpython\E|\Qjava\E|\Qhaskel\E|\Qclojure\E|\Qprolog\E|\Qscala\E){1}[\,]{0,1})+$/i', implode(",", $_POST["field-pl"]))) {
         return -6;
     }
     if (empty($_POST["check-accept"]) || $_POST["check-accept"] != "accepted") {
@@ -80,12 +80,25 @@ function save_to_db($db)
     return 1;
 }
 
+function set_cookies_on_success() {
+    $expiration_time = time() + 60*60*24*365;
+    setcookie('save', '1', $expiration_time);
+    setcookie('field-name', $_POST["field-name"], $expiration_time);
+    setcookie('field-phone', $_POST["field-phone"], $expiration_time);
+    setcookie('field-email', $_POST["field-email"], $expiration_time);
+    setcookie('field-date', $_POST["field-date"], $expiration_time);
+    setcookie('field-gender', $_POST["field-gender"], $expiration_time);
+    setcookie('field-bio', $_POST["field-bio"], $expiration_time);
+    setcookie('field-pl', implode(",", $_POST["field-pl"]), $expiration_time);
+}
+
 $validation_result = validate_fields();
 if ($validation_result != 1) {
     $STATUS = $validation_result;
     header(sprintf("Location: ?form_save=%d", $STATUS));
     exit();
 }
+set_cookies_on_success();
 
 $saving_result = save_to_db(connect_to_db());
 if ($saving_result != 1) {
