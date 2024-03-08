@@ -89,7 +89,7 @@ function set_cookies_on_success() {
     setcookie('field-date', $_POST["field-date"], $expiration_time);
     setcookie('field-gender', $_POST["field-gender"], $expiration_time);
     setcookie('field-bio', $_POST["field-bio"], $expiration_time);
-    setcookie('field-pl', implode(",", $_POST["field-pl"]), $expiration_time);
+    setcookie('field-pl', sprintf("@%s@", implode("@", $_POST["field-pl"])), $expiration_time);
 }
 
 $validation_result = validate_fields();

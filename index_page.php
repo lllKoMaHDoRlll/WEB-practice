@@ -17,53 +17,53 @@
             <h2>Form</h2>
             <form action="/web-2-task-4/index.php" method="POST">          
                 <label>Name:
-                    <input name="field-name" placeholder="Your name" type="text">
+                    <input name="field-name" placeholder="Your name" type="text" value="<?php print empty($_COOKIE['field-name']) ? '' : $_COOKIE['field-name'];?>">
                     <span class="err_desc">Please fill name field correctly</span>
                 </label>
                    
                 <label>Phone:
-                    <input name="field-phone" placeholder="Your phone number" type="tel">
+                    <input name="field-phone" placeholder="Your phone number" type="tel" value="<?php print empty($_COOKIE['field-phone']) ? '' : $_COOKIE['field-phone'];?>">
                     <span class="err_desc">Please fill phone field correctly</span>
                 </label>
                 
                 <label>Email:
-                    <input name="field-email" placeholder="Your email adress" type="email">
+                    <input name="field-email" placeholder="Your email adress" type="email" value="<?php print empty($_COOKIE['field-email']) ? '' : $_COOKIE['field-email'];?>">
                     <span class="err_desc">Please fill email field correctly</span>
                 </label>
     
                 <label>Date of birth:
-                    <input name="field-date" type="date">
+                    <input name="field-date" type="date" value="<?php print empty($_COOKIE['field-date']) ? '' : $_COOKIE['field-date'];?>">
                     <span class="err_desc">Please fill birthday date field correctly</span>
                 </label>
     
                 <p>Gender:</p>
                     <label class="radio-gender">
-                        <input name="field-gender" type="radio" value="male">Male
+                        <input name="field-gender" type="radio" value="male" <?php print $_COOKIE['field-gender'] == 'male' ? 'checked' : '';?>>Male
                     </label>
                     <label class="radio-gender">
-                    <input name="field-gender" type="radio" value="female">Female
+                    <input name="field-gender" type="radio" value="female" <?php print $_COOKIE['field-gender'] == 'female' ? 'checked' : '';?>>Female
                     </label>
                     <span class="err_desc">Please fill gender field correctly</span>
     
                 <label>Favorite PL:
                     <select name="field-pl[]" multiple="multiple">
-                        <option value="pascal">Pascal</option>
-                        <option value="c">C</option>
-                        <option value="cpp">C++</option>
-                        <option value="js">JavaScript</option>
-                        <option value="php">PHP</option>
-                        <option value="python">Python</option>
-                        <option value="java">Java</option>
-                        <option value="haskel">Haskel</option>
-                        <option value="clojure">Clojure</option>
-                        <option value="prolog">Prolog</option>
-                        <option value="scala">Scala</option>
+                        <option value="pascal" <?php print str_contains($_COOKIE['field-pl'], '@pascal@') ? 'selected' : '';?>>Pascal</option>
+                        <option value="c" <?php print str_contains($_COOKIE['field-pl'], '@c@') ? 'selected' : '';?>>C</option>
+                        <option value="cpp" <?php print str_contains($_COOKIE['field-pl'], '@cpp@') ? 'selected' : '';?>>C++</option>
+                        <option value="js" <?php print str_contains($_COOKIE['field-pl'], '@js@') ? 'selected' : '';?>>JavaScript</option>
+                        <option value="php" <?php print str_contains($_COOKIE['field-pl'], '@php@') ? 'selected' : '';?>>PHP</option>
+                        <option value="python" <?php print str_contains($_COOKIE['field-pl'], '@python@') ? 'selected' : '';?>>Python</option>
+                        <option value="java" <?php print str_contains($_COOKIE['field-pl'], '@java@') ? 'selected' : '';?>>Java</option>
+                        <option value="haskel" <?php print str_contains($_COOKIE['field-pl'], '@haskel@') ? 'selected' : '';?>>Haskel</option>
+                        <option value="clojure" <?php print str_contains($_COOKIE['field-pl'], '@clojure@') ? 'selected' : '';?>>Clojure</option>
+                        <option value="prolog" <?php print str_contains($_COOKIE['field-pl'], '@prolog@') ? 'selected' : '';?>>Prolog</option>
+                        <option value="scala" <?php print str_contains($_COOKIE['field-pl'], '@scala@') ? 'selected' : '';?>>Scala</option>
                     </select>
                     <span class="err_desc">Please fill fpl field correctly</span>
                 </label>
     
                 <label>BIO:
-                    <textarea name="field-bio"></textarea>
+                    <textarea name="field-bio" <?php print empty($_COOKIE['field-bio']) ? '' : $_COOKIE['field-bio'];?>></textarea>
                     <span class="err_desc">Please fill bio field correctly</span>
                 </label>
     
