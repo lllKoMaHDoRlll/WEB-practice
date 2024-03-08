@@ -112,6 +112,11 @@ form > label {
     color: #808080;
 }
 
+.err_input {
+    border-color: #F00 !important;
+    border-width: 2px !important;
+}
+
 #form input[type="radio"] {
     font: inherit;
     color: currentColor;

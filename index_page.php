@@ -17,22 +17,22 @@
             <h2>Form</h2>
             <form action="/web-2-task-4/index.php" method="POST">          
                 <label>Name:
-                    <input name="field-name" placeholder="Your name" type="text" value="<?php print empty($_COOKIE['field-name']) ? '' : $_COOKIE['field-name'];?>">
+                    <input name="field-name" placeholder="Your name" type="text" <?php print empty($_COOKIE["field-name-error"]) ? '' : 'class="err_input"';?> value="<?php print empty($_COOKIE['field-name']) ? '' : $_COOKIE['field-name'];?>">
                     <span class="err_desc" <?php print empty($_COOKIE["field-name-error"]) ? 'style="display:none;"' : '' ?>>Please fill name field correctly</span>
                 </label>
                    
                 <label>Phone:
-                    <input name="field-phone" placeholder="Your phone number" type="tel" value="<?php print empty($_COOKIE['field-phone']) ? '' : $_COOKIE['field-phone'];?>">
+                    <input name="field-phone" placeholder="Your phone number" type="tel" <?php print empty($_COOKIE["field-phone-error"]) ? '' : 'class="err_input"';?> value="<?php print empty($_COOKIE['field-phone']) ? '' : $_COOKIE['field-phone'];?>">
                     <span class="err_desc" <?php print empty($_COOKIE["field-phone-error"]) ? 'style="display:none;"' : '' ?>>Please fill phone field correctly</span>
                 </label>
                 
                 <label>Email:
-                    <input name="field-email" placeholder="Your email adress" type="email" value="<?php print empty($_COOKIE['field-email']) ? '' : $_COOKIE['field-email'];?>">
+                    <input name="field-email" placeholder="Your email adress" type="email" <?php print empty($_COOKIE["field-email-error"]) ? '' : 'class="err_input"';?> value="<?php print empty($_COOKIE['field-email']) ? '' : $_COOKIE['field-email'];?>">
                     <span class="err_desc" <?php print empty($_COOKIE["field-email-error"]) ? 'style="display:none;"' : '' ?>>Please fill email field correctly</span>
                 </label>
     
                 <label>Date of birth:
-                    <input name="field-date" type="date" value="<?php print empty($_COOKIE['field-date']) ? '' : $_COOKIE['field-date'];?>">
+                    <input name="field-date" type="date" <?php print empty($_COOKIE["field-date-error"]) ? '' : 'class="err_input"';?> value="<?php print empty($_COOKIE['field-date']) ? '' : $_COOKIE['field-date'];?>">
                     <span class="err_desc" <?php print empty($_COOKIE["field-date-error"]) ? 'style="display:none;"' : '' ?>>Please fill birthday date field correctly</span>
                 </label>
     
@@ -46,7 +46,7 @@
                     <span class="err_desc" <?php print empty($_COOKIE["field-gender-error"]) ? 'style="display:none;"' : '' ?>>Please fill gender field correctly</span>
     
                 <label>Favorite PL:
-                    <select name="field-pl[]" multiple="multiple">
+                    <select name="field-pl[]" multiple="multiple" <?php print empty($_COOKIE["field-pl-error"]) ? '' : 'class="err_input"';?>>
                         <option value="pascal" <?php print empty($_COOKIE['field-pl']) ? "" : (str_contains($_COOKIE['field-pl'], '@pascal@') ? 'selected' : '');?>>Pascal</option>
                         <option value="c" <?php print empty($_COOKIE['field-pl']) ? "" : (str_contains($_COOKIE['field-pl'], '@c@') ? 'selected' : '');?>>C</option>
                         <option value="cpp" <?php print empty($_COOKIE['field-pl']) ? "" : (str_contains($_COOKIE['field-pl'], '@cpp@') ? 'selected' : '');?>>C++</option>
@@ -63,7 +63,7 @@
                 </label>
     
                 <label>BIO:
-                    <textarea name="field-bio"><?php print empty($_COOKIE['field-bio']) ? '' : $_COOKIE['field-bio'];?></textarea>
+                    <textarea name="field-bio" <?php print empty($_COOKIE["field-bio-error"]) ? '' : 'class="err_input"';?>><?php print empty($_COOKIE['field-bio']) ? '' : $_COOKIE['field-bio'];?></textarea>
                     <span class="err_desc" <?php print empty($_COOKIE["field-bio-error"]) ? 'style="display:none;"' : '' ?>>Please fill bio field correctly</span>
                 </label>
     
