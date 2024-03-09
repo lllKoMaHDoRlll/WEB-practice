@@ -79,7 +79,7 @@ form {
     flex-direction: column;
 }
 
-form > label {
+form>label {
     display: flex;
     flex-direction: column;
 }
@@ -88,7 +88,8 @@ form > label {
     color: #FF0000 !important;
 }
 
-#chkbox-label, .radio-gender {
+#chkbox-label,
+.radio-gender {
     flex-direction: row;
 }
 
@@ -102,7 +103,9 @@ form > label {
     color: #FFF;
 }
 
-#form input, select, textarea {
+#form input,
+select,
+textarea {
     margin: 5px;
     border: 1px solid #fff;
     border-radius: 4px;
