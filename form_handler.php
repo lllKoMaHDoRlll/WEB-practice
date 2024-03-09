@@ -92,10 +92,16 @@ function validate_fields()
 
 function connect_to_db()
 {
-    $user = 'u67423';
-    $pass = '2585011';
-    $db = new PDO('mysql:host=localhost;dbname=test', $user, $pass, [PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-    return $db;
+    try {
+        $user = 'u67423';
+        $pass = '2585011';
+        $db = new PDO('mysql:host=localhost;dbname=u67423', $user, $pass, [PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+        return $db;
+    }
+    catch (PDOException $e) {
+        setcookie("saving_status", "-2");
+        exit();
+    }
 }
 
 function save_to_db($db)
@@ -108,7 +114,7 @@ function save_to_db($db)
         $gender = $_POST["field-gender"] == "male" ? '1' : '0';
         $bio = empty($_POST["field-bio"]) ? '' : $_POST["field-bio"];
     } catch (Exception $e) {
-        setcookie("saving_status", "-2");
+        setcookie("saving_status", "-3");
         return;
     }
 
@@ -135,7 +141,7 @@ function save_to_db($db)
         $db->commit();
     } catch (Exception $e) {
         $db->rollback();
-        setcookie("saving_status", "-3");
+        setcookie("saving_status", "-4");
         return;
     }
     setcookie("saving_status", "1");
@@ -147,3 +153,4 @@ if(!validate_fields()) {
 }
 
 save_to_db(connect_to_db());
+setcookie("saving_status", "1");
