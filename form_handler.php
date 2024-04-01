@@ -33,8 +33,7 @@ function validate_fields()
 
 function connect_to_db()
 {
-    $user = 'u67423';
-    $pass = '2585011';
+    include("db_data.php");
     $db = new PDO('mysql:host=localhost;dbname=u67423', $user, $pass, [PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
     return $db;
 }
