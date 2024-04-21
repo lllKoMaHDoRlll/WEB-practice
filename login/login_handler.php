@@ -4,6 +4,18 @@ function get_user_id($login, $password) {
     return -1;
 }
 
+function connect_to_db()
+{
+    try {
+        include("./../db_data.php");
+        $db = new PDO('mysql:host=localhost;dbname=u67423', $user, $pass, [PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+        return $db;
+    }
+    catch (PDOException $e) {
+        exit();
+    }
+}
+
 $login = !empty($_POST['field-login'])? $_POST['field-login'] : "";
 $password = !empty($_POST['field-password'])? $_POST['field-password'] : "";
 
