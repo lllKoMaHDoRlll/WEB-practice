@@ -16,6 +16,27 @@ function connect_to_db()
     }
 }
 
+function get_user_db_data($db)
+{
+    try {
+        $login = $_POST["field-login"];
+        $password = $_POST["field-password"];
+    } catch (Exception $e) {
+        return;
+    }
+
+    try {
+        $stmt = $db->prepare('SELECT user_id FROM users WHERE
+        login = ":login" AND password = ":password"');
+        $stmt->bindParam('login', $login);
+        $stmt->bindParam('password', $password);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    } catch (Exception $e) {
+        return;
+    }
+}
+
 $login = !empty($_POST['field-login'])? $_POST['field-login'] : "";
 $password = !empty($_POST['field-password'])? $_POST['field-password'] : "";
 
