@@ -16,15 +16,8 @@ function connect_to_db()
     }
 }
 
-function get_user_db_data($db)
+function get_user_db_data($db, $login, $password)
 {
-    try {
-        $login = $_POST["field-login"];
-        $password = $_POST["field-password"];
-    } catch (Exception $e) {
-        return;
-    }
-
     try {
         $stmt = $db->prepare('SELECT user_id FROM users WHERE
         login = ":login" AND password = ":password"');
