@@ -1,7 +1,14 @@
 <?php
 
 function get_user_id($login, $password) {
-    return -1;
+    $result = get_user_db_data(connect_to_db(), $login, $password);
+
+    if (!$result || count($result) == 0) {
+        return -1;
+    }
+    else {
+        return $result[0]['user_id'];
+    }
 }
 
 function connect_to_db()
@@ -20,10 +27,11 @@ function get_user_db_data($db, $login, $password)
 {
     try {
         $stmt = $db->prepare('SELECT user_id FROM users WHERE
-        login = ":login" AND password = ":password"');
+        login = :login AND password = :password;');
         $stmt->bindParam('login', $login);
         $stmt->bindParam('password', $password);
         $stmt->execute();
+        
         return $stmt->fetchAll();
     } catch (Exception $e) {
         return;
