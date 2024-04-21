@@ -15,7 +15,7 @@
         <h1 id="name">Cofee Cat</h1>
     </header>
     <div id="content">
-        <section id="login-data-container" class="container" <?php echo !empty($_COOKIE['pass'])? '': 'style="display: none"' ?>
+        <section id="login-data-container" class="container" <?php echo !empty($_COOKIE['pass'])? '': 'style="display: none"' ?>>
             <p class="text-light">
                 You can <a href="./login.php">login</a> with login: <?php echo empty($_COOKIE['login'])? '': strip_tags($_COOKIE['login']); ?> and password: <?php echo empty($_COOKIE['password'])? '': strip_tags($_COOKIE['password']);?>.
             </p>
