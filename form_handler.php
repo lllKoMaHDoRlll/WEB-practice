@@ -1,7 +1,7 @@
 <?php
 
 header('Content-Type: text/html; charset=UTF-8');
-header("Location: /web-2-task-4/");
+header("Location: ./");
 
 function validate_fields()
 {

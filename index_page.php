@@ -15,14 +15,14 @@
         <h1 id="name">Cofee Cat</h1>
     </header>
     <div id="content">
-        <section id="login-data-container" class="container">
+        <section id="login-data-container" class="container" <?php echo !empty($_COOKIE['pass'])? '': 'style="display: none"' ?>
             <p class="text-light">
                 You can <a href="./login.php">login</a> with login: <?php echo empty($_COOKIE['login'])? '': strip_tags($_COOKIE['login']); ?> and password: <?php echo empty($_COOKIE['password'])? '': strip_tags($_COOKIE['password']);?>.
             </p>
         </section>
         <section id="form" class="container">
             <h2>Form</h2>
-            <form action="/web-2-task-4/index.php" method="POST">
+            <form action="./index.php" method="POST">
                 <label>Name:
                     <input name="field-name" placeholder="Your name" type="text" <?php print empty($_COOKIE["field-name-error"]) ? '' : 'class="err_input"'; ?>
                         value="<?php print empty($_COOKIE['field-name']) ? '' : $_COOKIE['field-name']; ?>">
