@@ -15,6 +15,11 @@
         <h1 id="name">Cofee Cat</h1>
     </header>
     <div id="content">
+        <section id="login-data-container" class="login-data-container">
+            <p>
+                You can <a href="./login.php">login</a> with login: <?php echo empty($_COOKIE['login'])? '': strip_tags($_COOKIE['login']); ?> and password: <?php echo empty($_COOKIE['password'])? '': strip_tags($_COOKIE['password']);?>.
+            </p>
+        </section>
         <section id="form">
             <h2>Form</h2>
             <form action="/web-2-task-4/index.php" method="POST">
