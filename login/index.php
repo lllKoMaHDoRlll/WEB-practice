@@ -1,6 +1,16 @@
 <?php
 
+$is_session_started = false;
+if($_COOKIE[session_name()] && session_start()) {
+    $is_session_started = true;
+    if (!empty($_SESSION['login'])) {
+        header('Location: ./../');
+        exit();
+    }
+}
+
 function on_get() {
+    header('Content-Type: text/html; charset=UTF-8');
     include("./login_page.php");
 }
 
