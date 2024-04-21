@@ -45,6 +45,7 @@ $user_id = get_user_id($login, $password);
 
 if ($user_id == -1) {
     setcookie("login-error", "1");
+    header("Location: ./");
     exit();
 }
 else {
