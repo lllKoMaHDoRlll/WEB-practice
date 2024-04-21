@@ -15,7 +15,7 @@ function on_get() {
 }
 
 function on_post() {
-    
+    global $is_session_started;
     include("./login_handler.php");
 }
 
