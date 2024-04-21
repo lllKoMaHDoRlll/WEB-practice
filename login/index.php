@@ -1,7 +1,7 @@
 <?php
 
 $is_session_started = false;
-if($_COOKIE[session_name()] && session_start()) {
+if(!empty($_COOKIE[session_name()]) && session_start()) {
     $is_session_started = true;
     if (!empty($_SESSION['login'])) {
         header('Location: ./../');
@@ -15,6 +15,7 @@ function on_get() {
 }
 
 function on_post() {
+    
     include("./login_handler.php");
 }
 
