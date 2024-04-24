@@ -69,9 +69,26 @@ header {
     border: 3px solid #FFF;
     border-radius: 20px;
     order: 3;
-    width: max-content;
     min-width: 30dvw;
     color: #fff;
+}
+
+button {
+    outline: none;
+    border: 1px solid #fff;
+    border-radius: .8em;
+    padding: .4em;
+    color: inherit;
+    cursor: pointer;
+    background-color: transparent;
+    transition: .2s;
+}
+
+button:hover {
+    background-color: #c4b4a1;
+    color: #000;
+    transition: .2s;
+    border-color: #000;
 }
 
 .container a {
