@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+    <script src="./script.js" defer></script>
 </head>
 
 <body>
@@ -19,7 +19,7 @@
             <p>
                 You have been signed in as <?php echo !empty($_SESSION['login'])? $_SESSION['login'] : ''; ?>
             </p>
-            <button type="button">Log out</button>
+            <button type="button" value="<?php echo session_name(); ?>" id="logout-button">Log out</button>
         </section>
         <section id="login-data-container" class="container" <?php echo !empty($_COOKIE['password'])? '': 'style="display: none"' ?>>
             <p class="text-light">
