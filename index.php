@@ -80,7 +80,7 @@ function on_get()
         $values["phone"] = empty($_COOKIE['field-phone']) ? '' : strip_tags($_COOKIE['field-phone']);
         $values["email"] = empty($_COOKIE['field-email']) ? '' : strip_tags($_COOKIE['field-email']);
         $values["date"] = empty($_COOKIE['field-date']) ? '' : strip_tags($_COOKIE['field-date']);
-        $values["gender"] = empty($_COOKIE['field-gender']) ? '' : strip_tags($_COOKIE['field-gender']);
+        $values["gender"] = empty($_COOKIE['field-gender']) ? '' : (strip_tags($_COOKIE['field-gender']) == "male"? '1' : '0');
         $values["fpls"] = empty($_COOKIE['field-pl']) ? '' : strip_tags($_COOKIE['field-pl']);
         $values["bio"] = empty($_COOKIE['field-bio']) ? '' : strip_tags($_COOKIE['field-bio']);
     }
