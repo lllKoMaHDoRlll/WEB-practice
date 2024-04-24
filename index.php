@@ -84,6 +84,9 @@ function on_get()
         $values["fpls"] = empty($_COOKIE['field-pl']) ? '' : strip_tags($_COOKIE['field-pl']);
         $values["bio"] = empty($_COOKIE['field-bio']) ? '' : strip_tags($_COOKIE['field-bio']);
     }
+
+    setcookie("login", "", 1);
+    setcookie("password", "", 1);
     include("./index_page.php");
 }
 
