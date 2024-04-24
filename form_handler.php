@@ -180,6 +180,7 @@ function update_sumbission_data($db) {
 
         $stmt = $db->prepare("DELETE FROM fpls WHERE parent_id = :parent_id");
         $stmt->bindParam('parent_id', $row_id);
+        $stmt->execute();
 
         foreach ($_POST["field-pl"] as $fpl) {
             $stmt = $db->prepare(sprintf("INSERT INTO fpls (parent_id, fpl) VALUES (%s, :fpl);", $row_id));
