@@ -3,6 +3,18 @@
 header('Content-Type: text/html; charset=UTF-8');
 header("Location: ./");
 
+function generate_login() {
+    return uniqid();
+}
+
+function generate_password() {
+    return rand();
+}
+
+function get_password_hash($password) {
+    return md5($password);
+}
+
 function validate_fields()
 {
     $expiration_time_on_error = 0;
@@ -90,20 +102,7 @@ function validate_fields()
     return $validation_passed;
 }
 
-function connect_to_db()
-{
-    try {
-        include("db_data.php");
-        $db = new PDO('mysql:host=localhost;dbname=u67423', $user, $pass, [PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-        return $db;
-    }
-    catch (PDOException $e) {
-        setcookie("saving_status", "-2");
-        exit();
-    }
-}
-
-function save_to_db($db)
+function save_to_db($db, $user_id)
 {
     try {
         $name = $_POST["field-name"];
@@ -120,8 +119,9 @@ function save_to_db($db)
     try {
         $db->beginTransaction();
         $stmt = $db->prepare("INSERT INTO application 
-        (name, phone, email, bdate, gender, bio) 
-        VALUES (:name, :phone, :email, :bdate, :gender, :bio);");
+        (user_id, name, phone, email, bdate, gender, bio) 
+        VALUES (:user_id, :name, :phone, :email, :bdate, :gender, :bio);");
+        $stmt->bindParam('user_id', $user_id);
         $stmt->bindParam('name', $name);
         $stmt->bindParam('phone', $phone);
         $stmt->bindParam('email', $email);
@@ -140,10 +140,85 @@ function save_to_db($db)
         $db->commit();
     } catch (Exception $e) {
         $db->rollback();
+        echo $e;
         setcookie("saving_status", "-4");
         return;
     }
     setcookie("saving_status", "1");
+}
+
+function update_sumbission_data($db) {
+    try {
+        $name = $_POST["field-name"];
+        $phone = $_POST["field-phone"];
+        $email = $_POST["field-email"];
+        $bdate = $_POST["field-date"];
+        $gender = $_POST["field-gender"] == "male" ? '1' : '0';
+        $bio = empty($_POST["field-bio"]) ? '' : $_POST["field-bio"];
+    } catch (Exception $e) {
+        setcookie("saving_status", "-3");
+        return;
+    }
+    try {
+        $db->beginTransaction();
+        $stmt = $db->prepare("UPDATE application 
+        SET name = :name, phone = :phone, email = :email, bdate = :bdate, gender = :gender, bio = :bio
+        WHERE user_id = :user_id");
+        $stmt->bindParam('user_id', $_SESSION['user_id']);
+        $stmt->bindParam('name', $name);
+        $stmt->bindParam('phone', $phone);
+        $stmt->bindParam('email', $email);
+        $stmt->bindParam('bdate', $bdate);
+        $stmt->bindParam('gender', $gender);
+        $stmt->bindParam('bio', $bio);
+        $stmt->execute();
+
+        $stmt = $db->prepare("SELECT id from application WHERE user_id = :user_id");
+        $stmt->bindParam("user_id", $_SESSION['user_id']);
+        $stmt->execute();
+        $row_id = $stmt->fetchAll()[0]['id'];
+
+        $stmt = $db->prepare("DELETE FROM fpls WHERE parent_id = :parent_id");
+        $stmt->bindParam('parent_id', $row_id);
+
+        foreach ($_POST["field-pl"] as $fpl) {
+            $stmt = $db->prepare(sprintf("INSERT INTO fpls (parent_id, fpl) VALUES (%s, :fpl);", $row_id));
+            $stmt->bindParam('fpl', $fpl);
+            $stmt->execute();
+        }
+
+        $db->commit();
+    }
+    catch (PDOException $e) {
+        $db->rollback();
+        setcookie("saving_status", "-4");
+        header("Location: ./index.php");
+        exit();
+    }
+}
+
+function add_new_user($db) {
+    try {
+        $login = generate_login();
+        $password = generate_password();
+        $pass_hash = get_password_hash($password);
+
+        setcookie('login', $login, time() + 60*60*24*365);
+        setcookie('password', $password, time() + 60*60*24*365);
+
+        $stmt = $db->prepare("INSERT INTO users (login, password_hash) VALUES (:login, :password_hash)");
+        $stmt->bindParam('login', $login);
+        $stmt->bindParam('password_hash', $pass_hash);
+        $stmt->execute();
+
+        $user_id = $db->lastInsertId();
+        return $user_id;
+    }
+    catch (PDOException $e) {
+        setcookie("saving_status", "-4");
+        header("Location: ./index.php");
+        exit();
+    }
 }
 
 if(!validate_fields()) {
@@ -151,5 +226,15 @@ if(!validate_fields()) {
     exit();
 }
 
-save_to_db(connect_to_db());
+$db = connect_to_db();
+
+if (!empty($_COOKIE[session_name()]) && session_start() && !empty($_SESSION['user_id']) && !empty($_SESSION['login'])) {
+    update_sumbission_data($db);
+}
+else {
+    $user_id = add_new_user($db);
+    save_to_db($db, $user_id);
+}
+
+
 setcookie("saving_status", "1");
