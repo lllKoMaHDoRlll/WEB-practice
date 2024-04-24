@@ -15,6 +15,12 @@
         <h1 id="name">Cofee Cat</h1>
     </header>
     <div id="content">
+        <section id="login-status-container" class="container" <?php echo !empty($_COOKIE[session_name()])? '' : 'style="display: none"'; ?>>
+            <p>
+                You have been signed in as <?php echo !empty($_SESSION['login'])? $_SESSION['login'] : ''; ?>
+            </p>
+            <button type="button">Log out</button>
+        </section>
         <section id="login-data-container" class="container" <?php echo !empty($_COOKIE['password'])? '': 'style="display: none"' ?>>
             <p class="text-light">
                 You can <a href="./login">login</a> with login: <?php echo empty($_COOKIE['login'])? '': strip_tags($_COOKIE['login']); ?> and password: <?php echo empty($_COOKIE['password'])? '': strip_tags($_COOKIE['password']);?>.
