@@ -27,9 +27,9 @@ function get_user_db_data($db, $login, $password)
 {
     try {
         $stmt = $db->prepare('SELECT user_id FROM users WHERE
-        login = :login AND password = :password;');
+        login = :login AND password_hash = :password_hash');
         $stmt->bindParam('login', $login);
-        $stmt->bindParam('password', $password);
+        $stmt->bindParam('password_hash', md5($password));
         $stmt->execute();
         
         return $stmt->fetchAll();
