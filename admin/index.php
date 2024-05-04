@@ -143,6 +143,34 @@ function update_sumbission_data($db, $user_id) {
     }
 }
 
+function delete_form_submission($db, $user_id) {
+    try {
+        $db->beginTransaction();
+
+        $stmt = $db->prepare("SELECT id from application WHERE user_id = :user_id");
+        $stmt->bindParam("user_id", $user_id);
+        $stmt->execute();
+        $row_id = $stmt->fetchAll()[0]['id'];
+
+        $stmt = $db->prepare("DELETE FROM fpls WHERE parent_id = :parent_id");
+        $stmt->bindParam('parent_id', $row_id);
+        $stmt->execute();
+
+        $stmt = $db->prepare("DELETE FROM application WHERE user_id = :user_id");
+        $stmt->bindParam('user_id', $user_id);
+        $stmt->execute();
+
+        $db->commit();
+    }
+    catch (PDOException $e) {
+        $db->rollback();
+        echo $e;
+        setcookie("action_status", "-3");
+        // header("Location: ./index.php");
+        exit();
+    }
+}
+
 function on_post()
 {
     switch ($_POST['button-action']) {
@@ -158,6 +186,10 @@ function on_post()
             setcookie("action_status", "1");
             break;
         case "DELETE":
+            $db = connect_to_db();
+            delete_form_submission($db, $_POST['user-id']);
+            header("Location: ./index.php");
+            setcookie("action_status", "1");
             break;
     }
 }
