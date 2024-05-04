@@ -19,12 +19,12 @@ function on_get()
         if (!empty($submission)) {
             $submission_id = $submission[0]["id"];
 
-            $values["name"] = $submission[0]['name'];
-            $values["phone"] = $submission[0]['phone'];
-            $values["email"] = $submission[0]['email'];
-            $values["date"] = $submission[0]['bdate'];
-            $values["gender"] = $submission[0]['gender'];
-            $values["bio"] = $submission[0]['bio'];
+            $values["name"] = strip_tags($submission[0]['name']);
+            $values["phone"] = strip_tags($submission[0]['phone']);
+            $values["email"] = strip_tags($submission[0]['email']);
+            $values["date"] = strip_tags($submission[0]['bdate']);
+            $values["gender"] = strip_tags($submission[0]['gender']);
+            $values["bio"] = strip_tags($submission[0]['bio']);
             
             $fpls = get_user_fpls($db, $submission_id);
             $values["fpls"] = sprintf("@%s@", implode("@", $fpls));
