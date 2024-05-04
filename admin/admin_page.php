@@ -32,7 +32,19 @@
                 </button>
             </div>
             <div class="submissions-stats tile">
-
+                <h3>
+                    Statistics
+                    <hr>
+                </h3>
+                <div class="total-submissions-count-outter">
+                    <p>Total submissions: <span>10</span></p>
+                </div>
+                <div class="selected-pl-count-outter">
+                    <h4>Selected PLs count</h4>
+                    <ul>
+                        <li><p>Key: <span>Value</span></p></li>
+                    </ul>
+                </div>
             </div>
             <div class="user-submissions tile">
 
