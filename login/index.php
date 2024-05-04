@@ -1,5 +1,7 @@
 <?php
 
+include("./../utils.php");
+
 $is_session_started = false;
 if(!empty($_COOKIE[session_name()]) && session_start()) {
     $is_session_started = true;

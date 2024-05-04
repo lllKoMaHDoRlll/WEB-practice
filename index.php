@@ -1,4 +1,7 @@
 <?php
+include("./db_utils.php");
+include("./utils.php");
+
 
 $STATUS_DESCRIPTION = array(
     "1" => "Form was successfully sent.",
@@ -8,51 +11,11 @@ $STATUS_DESCRIPTION = array(
     "-4"=> "An error was occured during sending data to the database.",
 );
 
-function connect_to_db()
-{
-    try {
-        include("./db_data.php");
-        $db = new PDO('mysql:host=localhost;dbname=u67423', $user, $pass, [PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-        return $db;
-    }
-    catch (PDOException $e) {
-        exit();
-    }
-}
-
-function get_user_form_submission($db, $user_id)
-{
-    try {
-        $stmt = $db->prepare('SELECT * FROM application WHERE
-        user_id = :user_id');
-        $stmt->bindParam('user_id', $user_id);
-        $stmt->execute();
-        
-        return $stmt->fetchAll();
-    } catch (Exception $e) {
-        return;
-    }
-}
-
-function get_user_fpls($db, $submission_id)
-{
-    try {
-        $stmt = $db->prepare('SELECT fpl FROM fpls WHERE
-        parent_id = :parent_id');
-        $stmt->bindParam('parent_id', $submission_id);
-        $stmt->execute();
-        
-        return $stmt->fetchAll(PDO::FETCH_COLUMN);
-    } catch (Exception $e) {
-        return;
-    }
-}
-
 function on_get()
 {
     global $STATUS_DESCRIPTION;
     if (!empty($_COOKIE["saving_status"])) {
-        echo sprintf("<script>alert ('%s')</script>", $STATUS_DESCRIPTION[$_COOKIE["saving_status"]]);
+        alert($STATUS_DESCRIPTION[$_COOKIE["saving_status"]]);
         setcookie('saving_status', '', 1);
     }
     $values = array();
