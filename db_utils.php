@@ -210,3 +210,18 @@ function get_user_fpls($db, $submission_id)
         exit();
     }
 }
+
+function get_admin_db_data($db, $login, $password_hash)
+{
+    try {
+        $stmt = $db->prepare('SELECT id FROM admins WHERE
+        login = :login AND password_hash = :password_hash');
+        $stmt->bindParam('login', $login);
+        $stmt->bindParam('password_hash', $password_hash);
+        $stmt->execute();
+        
+        return $stmt->fetchAll();
+    } catch (Exception $e) {
+        exit();
+    }
+}

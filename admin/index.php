@@ -38,11 +38,12 @@ function on_post()
     }
 }
 
+$db = connect_to_db();
+
 if (
     empty($_SERVER['PHP_AUTH_USER']) || 
     empty($_SERVER['PHP_AUTH_PW']) ||
-    $_SERVER['PHP_AUTH_USER'] != 'admin' ||
-    md5($_SERVER['PHP_AUTH_PW']) != md5('admin')
+    count(get_admin_db_data($db, $_SERVER['PHP_AUTH_USER'], get_password_hash($_SERVER['PHP_AUTH_PW']))) == 0
 ) 
 {
     header('HTTP/1.1 401 Unanthorized');
