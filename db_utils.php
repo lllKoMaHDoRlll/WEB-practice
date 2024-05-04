@@ -8,6 +8,8 @@ function connect_to_db()
         return $db;
     }
     catch (PDOException $e) {
+        setcookie("action_status", "-2");
+        header("Location: ./");
         exit();
     }
 }
@@ -35,7 +37,9 @@ function get_form_submissions($db)
 
         return $submissions;
     } catch (Exception $e) {
-        return;
+        setcookie("action_status", "-3");
+        header("Location: ./");
+        exit();
     }
 }
 
@@ -74,8 +78,8 @@ function update_sumbission_data($db, $user_id, $submission) {
     }
     catch (PDOException $e) {
         $db->rollback();
-        setcookie("action_status", "-4");
-        header("Location: ./index.php");
+        setcookie("action_status", "-3");
+        header("Location: ./");
         exit();
     }
 }
@@ -102,7 +106,7 @@ function delete_form_submission($db, $user_id) {
     catch (PDOException $e) {
         $db->rollback();
         setcookie("action_status", "-3");
-        header("Location: ./index.php");
+        header("Location: ./");
         exit();
     }
 }
@@ -134,8 +138,8 @@ function save_form_submission($db, $user_id, $submission)
         $db->commit();
     } catch (Exception $e) {
         $db->rollback();
-        echo $e;
-        setcookie("saving_status", "-4");
+        setcookie("action_status", "-3");
+        header("Location: ./");
         return;
     }
 }
@@ -151,8 +155,8 @@ function add_new_user($db, $login, $password_hash) {
         return $user_id;
     }
     catch (PDOException $e) {
-        setcookie("saving_status", "-4");
-        header("Location: ./index.php");
+        setcookie("action_status", "-3");
+        header("Location: ./");
         exit();
     }
 }
@@ -168,6 +172,8 @@ function get_user_db_data($db, $login, $password_hash)
         
         return $stmt->fetchAll();
     } catch (Exception $e) {
+        setcookie("action_status", "-3");
+        header("Location: ./");
         exit();
     }
 }
@@ -193,6 +199,8 @@ function get_user_form_submission($db, $user_id)
         
         return $stmt->fetchAll();
     } catch (Exception $e) {
+        setcookie("action_status", "-3");
+        header("Location: ./");
         exit();
     }
 }
@@ -207,6 +215,8 @@ function get_user_fpls($db, $submission_id)
         
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
     } catch (Exception $e) {
+        setcookie("action_status", "-3");
+        header("Location: ./");
         exit();
     }
 }
@@ -222,6 +232,8 @@ function get_admin_db_data($db, $login, $password_hash)
         
         return $stmt->fetchAll();
     } catch (Exception $e) {
+        setcookie("action_status", "-2");
+        header("Location: ./");
         exit();
     }
 }

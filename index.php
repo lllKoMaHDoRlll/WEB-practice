@@ -2,21 +2,12 @@
 include("./db_utils.php");
 include("./utils.php");
 
-
-$STATUS_DESCRIPTION = array(
-    "1" => "Form was successfully sent.",
-    "-1" => "An error was occured during validating fields.",
-    "-2" => "An error was occured during connecting to the database.",
-    "-3" => "An error was occured during serializing fields.",
-    "-4"=> "An error was occured during sending data to the database.",
-);
-
 function on_get()
 {
     global $STATUS_DESCRIPTION;
-    if (!empty($_COOKIE["saving_status"])) {
-        alert($STATUS_DESCRIPTION[$_COOKIE["saving_status"]]);
-        setcookie('saving_status', '', 1);
+    if (!empty($_COOKIE["action_status"])) {
+        alert($STATUS_DESCRIPTION[$_COOKIE["action_status"]]);
+        setcookie('action_status', '', 1);
     }
     $values = array();
     if (!empty($_COOKIE[session_name()]) && session_start() && !empty($_SESSION['login'])) {

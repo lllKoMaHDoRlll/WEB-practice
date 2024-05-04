@@ -24,5 +24,5 @@ else {
     $_SESSION['login'] = $_POST['field-login'];
     $_SESSION['user_id'] = $user_id;
 
-    // header("Location: ./../");
+    header("Location: ./../");
 }

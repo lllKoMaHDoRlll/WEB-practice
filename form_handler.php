@@ -4,7 +4,7 @@ header('Content-Type: text/html; charset=UTF-8');
 header("Location: ./");
 
 if(!validate_fields_and_set_cookies()) {
-    setcookie("saving_status", "-1");
+    setcookie("action_status", "-1");
     exit();
 }
 
@@ -27,4 +27,4 @@ else {
     save_form_submission($db, $user_id, $submission);
 }
 
-setcookie("saving_status", "1");
+setcookie("action_status", "1");
