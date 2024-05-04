@@ -61,7 +61,8 @@
                             echo '
                                 <div class="submission-item">
                                     <form action="./index.php" method="POST">
-                                        <input type="text" name="field-user-id" value="'. $submission['user_id'] .'" hidden>
+                                        <input type="text" name="user-id" value="'. $submission['user_id'] .'" hidden>
+                                        <input type="checkbox" name="check-accept" value="accepted" checked hidden>
                                         <div class="text-field-outter form-field">
                                             <label for="field-name">Name: </label>
                                             <input type="text" name="field-name" placeholder="Your name" value="'. $submission['name'] .'">
@@ -136,8 +137,8 @@
                                             <textarea name="field-bio">'. $submission['bio'] .'</textarea>
                                         </div>
                                         <div class="submission-controls">
-                                            <button class="edit-button" type="submit">Edit</button>
-                                            <button class="delete-button" type="submit">Delete</button>
+                                            <button name="button-action" class="edit-button" type="submit" value="EDIT">Edit</button>
+                                            <button name="button-action" class="delete-button" type="submit" value="DELETE">Delete</button>
                                         </div>
                                     </form>
                                 </div>
