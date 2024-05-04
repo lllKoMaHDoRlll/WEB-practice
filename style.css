@@ -127,6 +127,11 @@ header {
     background-color: hsl(32.57deg 12.88% 80%);
 }
 
+.admin-status > button:disabled {
+    background-color: #808080;
+    cursor: default;
+}
+
 .submissions-stats {
     grid-area: statistics;
 }

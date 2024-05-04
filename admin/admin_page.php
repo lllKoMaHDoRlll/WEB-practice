@@ -27,7 +27,7 @@
                         <?php echo $_SERVER['PHP_AUTH_USER'];?>
                     </span>
                 </p>
-                <button>
+                <button disabled>
                     Exit
                 </button>
             </div>
