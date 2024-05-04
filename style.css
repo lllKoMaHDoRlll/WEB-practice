@@ -152,11 +152,55 @@ header {
     overflow-y: scroll;
     max-height: 42em;
     gap: .5em;
+    padding: .5em;
 }
 
 .submission-item {
     flex-shrink: 0;
-    background-color: red;
+    background-color: hsl(216, 19%, 84%);
+    border: 2px solid hsl(216, 19%, 44%);
+    border-radius: 1em;
+}
+
+.submission-item > form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, auto));
+    padding: .3em;
+    grid-gap: 1em;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.form-field > label {
+    background-color: hsl(212, 16%, 64%);
+    display: inline-block;
+    border-radius: .5em;
+    padding: .1em;
+    margin-bottom: 1em;
+}
+
+.submission-controls > button {
+    border-color: #000;
+}
+
+.edit-button {
+    background-color: hsl(53, 100%, 85%);
+}
+
+.edit-button:hover {
+    background-color: hsl(53, 100%, 64%);
+}
+
+.delete-button {
+    background-color: hsl(9, 75%, 73%);
+}
+
+.delete-button:hover {
+    background-color: hsl(9, 86%, 60%);
 }
 
 button {
@@ -211,10 +255,9 @@ form>label {
     color: #FFF;
 }
 
-#form input,
+form input,
 select,
 textarea {
-    margin: 5px;
     border: 1px solid #fff;
     border-radius: 4px;
     padding: 5px;
@@ -228,7 +271,7 @@ textarea {
     border-width: 2px !important;
 }
 
-#form input[type="radio"] {
+form input[type="radio"] {
     font: inherit;
     color: currentColor;
     width: 0.75em;
@@ -238,18 +281,18 @@ textarea {
     margin-right: 5px;
 }
 
-#form option {
+form option {
     width: 100px;
     margin: 5px;
     border-radius: 4px;
 }
 
-#form option:checked {
+form option:checked {
     color: black;
     background-color: #c4b4a1;
 }
 
-#form input[type="submit"]:hover {
+form input[type="submit"]:hover {
     color: black;
     background-color: #c4b4a1;
 }
