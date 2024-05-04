@@ -5,6 +5,12 @@ include("./../db_utils.php");
 
 function on_get()
 {
+    global $STATUS_DESCRIPTION;
+    if (!empty($_COOKIE["action_status"])) {
+        alert($STATUS_DESCRIPTION[$_COOKIE["action_status"]]);
+        setcookie('action_status', '', 1);
+    }
+
     $db = connect_to_db();
     $submissions = get_form_submissions($db);
     $fpls_count = count_fpls($submissions);
@@ -27,13 +33,13 @@ function on_post()
 
             update_sumbission_data($db, $_POST['user-id'], $submission);
             header("Location: ./index.php");
-            setcookie("action_status", "1");
+            setcookie("action_status", "2");
             break;
         case "DELETE":
             $db = connect_to_db();
             delete_form_submission($db, $_POST['user-id']);
             header("Location: ./index.php");
-            setcookie("action_status", "1");
+            setcookie("action_status", "3");
             break;
     }
 }
