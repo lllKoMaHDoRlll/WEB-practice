@@ -14,8 +14,10 @@
             <img src="./../images/cat_logo.png" id="logo" alt="Logo">
             <h1 id="name">Cofee Cat</h1>
         </header>
-    </main>
+        <div class="content">
 
+        </div>
+    </main>
 </body>
 
 </html>

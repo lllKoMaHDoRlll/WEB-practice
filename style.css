@@ -77,6 +77,13 @@ header {
     width: 100dvw;
     height: 100dvh;
     padding: .5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.screen-container > .content {
+    background-color: aqua;
+    flex-grow: 1;
 }
 
 button {
