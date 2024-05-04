@@ -82,8 +82,57 @@ header {
 }
 
 .screen-container > .content {
-    background-color: aqua;
     flex-grow: 1;
+    display: grid;
+    grid-template-areas: "status submissions"
+                         "statistics submissions";
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 1fr 2fr;
+    grid-gap: 1em;
+    padding: .5em;
+}
+
+.tile {
+    background-color: var(--acc-color);
+    border: 3px solid #000;
+    border-radius: 20px;
+    padding: 1em;
+}
+
+.admin-status {
+    grid-area: status;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.admin-status > h3 > hr {
+    border: none;
+    border-top: 1px solid #000;
+}
+
+.admin-status > p > span {
+    display: block;
+    max-width: 20em;
+    overflow: auto;
+}
+
+.admin-status > button {
+    width: 100%;
+    border-color: #000;
+    background-color: hsl(32.57deg 12.88% 60%);
+}
+
+.admin-status > button:hover {
+    background-color: hsl(32.57deg 12.88% 80%);
+}
+
+.submissions-stats {
+    grid-area: statistics;
+}
+
+.user-submissions {
+    grid-area: submissions;
 }
 
 button {
