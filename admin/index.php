@@ -3,6 +3,8 @@
 include("./../utils.php");
 include("./../db_utils.php");
 
+header('Content-Type: text/html; charset=UTF-8');
+
 function on_get()
 {
     global $STATUS_DESCRIPTION;
