@@ -47,7 +47,13 @@
                 </div>
             </div>
             <div class="user-submissions tile">
-
+                <h3>
+                    Submissions
+                    <hr>
+                </h3>
+                <div class="submissions-list-outter">
+                    <div class="submission-item"></div>
+                </div>
             </div>
         </div>
     </main>

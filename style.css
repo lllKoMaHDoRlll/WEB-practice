@@ -131,13 +131,32 @@ header {
     grid-area: statistics;
 }
 
-
 .selected-pl-count-outter > ul {
     list-style-type: none;
 }
 
 .user-submissions {
     grid-area: submissions;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.submissions-list-outter {
+    background-color: hsl(32.57deg 12.88% 90%);
+    flex-grow: 1;
+    border: 2px solid #000;
+    border-radius: 20px 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    max-height: 42em;
+    gap: .5em;
+}
+
+.submission-item {
+    flex-shrink: 0;
+    background-color: red;
 }
 
 button {
