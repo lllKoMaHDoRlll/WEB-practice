@@ -177,3 +177,7 @@ function count_fpls($submissions) {
     }
     return $fpls_count;
 }
+
+function sanitize($string) {
+    return htmlspecialchars($string);
+}
