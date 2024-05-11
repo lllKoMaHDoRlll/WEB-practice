@@ -23,7 +23,7 @@
         </section>
         <section id="login-data-container" class="container" <?php echo !empty($_COOKIE['password'])? '': 'style="display: none"' ?>>
             <p class="text-light">
-                You can <a href="./login">login</a> with login: <?php echo empty($_COOKIE['login'])? '': strip_tags($_COOKIE['login']); ?> and password: <?php echo empty($_COOKIE['password'])? '': strip_tags($_COOKIE['password']);?>.
+                You can <a href="./login">login</a> with login: <?php echo empty($_COOKIE['login'])? '': sanitize($_COOKIE['login']); ?> and password: <?php echo empty($_COOKIE['password'])? '': sanitize($_COOKIE['password']);?>.
             </p>
         </section>
         <section id="form" class="container">

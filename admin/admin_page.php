@@ -61,23 +61,23 @@
                             echo '
                                 <div class="submission-item">
                                     <form action="./index.php" method="POST">
-                                        <input type="text" name="user-id" value="'. $submission['user_id'] .'" hidden>
+                                        <input type="text" name="user-id" value="'. sanitize($submission['user_id']) .'" hidden>
                                         <input type="checkbox" name="check-accept" value="accepted" checked hidden>
                                         <div class="text-field-outter form-field">
                                             <label for="field-name">Name: </label>
-                                            <input type="text" name="field-name" placeholder="Your name" value="'. $submission['name'] .'">
+                                            <input type="text" name="field-name" placeholder="Your name" value="'. sanitize($submission['name']) .'">
                                         </div>
                                         <div class="text-field-outter form-field">
                                             <label for="field-phone">Phone: </label>
-                                            <input type="tel" name="field-phone" placeholder="Your phone" value="'. $submission['phone'] .'">
+                                            <input type="tel" name="field-phone" placeholder="Your phone" value="'. sanitize($submission['phone']) .'">
                                         </div>
                                         <div class="text-field-outter form-field">
                                             <label for="field-email">Email: </label>
-                                            <input type="email" name="field-email" placeholder="Your email" value="'. $submission['email'] .'">
+                                            <input type="email" name="field-email" placeholder="Your email" value="'. sanitize($submission['email']) .'">
                                         </div>
                                         <div class="text-field-outter form-field">
                                             <label for="field-date">Date of Birth: </label>
-                                            <input type="date" name="field-date" value="'. $submission['bdate'] .'">
+                                            <input type="date" name="field-date" value="'. sanitize($submission['bdate']) .'">
                                         </div>
                                         <div class="radio-field-outter form-field">
                                             <label for="field-gender">Gender: </label>
@@ -134,7 +134,7 @@
                                         </div>
                                         <div class="textarea-field-outter form-field">
                                             <label for="field-bio">Bio: </label>
-                                            <textarea name="field-bio">'. $submission['bio'] .'</textarea>
+                                            <textarea name="field-bio">'. sanitize($submission['bio']) .'</textarea>
                                         </div>
                                         <div class="submission-controls">
                                             <button name="button-action" class="edit-button" type="submit" value="EDIT">Edit</button>

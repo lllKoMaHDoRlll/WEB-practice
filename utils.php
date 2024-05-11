@@ -11,13 +11,13 @@ $STATUS_DESCRIPTION = array(
 
 function parse_form_submission_from_post() {
     $submission = array();
-    $submission['name'] = strip_tags($_POST['field-name']);
-    $submission['phone'] = strip_tags($_POST['field-phone']);
-    $submission['email'] = strip_tags($_POST['field-email']);
-    $submission['date'] = strip_tags($_POST['field-date']);
-    $submission['gender'] = strip_tags($_POST['field-gender']);
-    $submission['bio'] = strip_tags($_POST['field-bio']);
-    $submission['fpls'] = array_map('strip_tags', $_POST['field-pl']);
+    $submission['name'] = sanitize($_POST['field-name']);
+    $submission['phone'] = sanitize($_POST['field-phone']);
+    $submission['email'] = sanitize($_POST['field-email']);
+    $submission['date'] = sanitize($_POST['field-date']);
+    $submission['gender'] = sanitize($_POST['field-gender']);
+    $submission['bio'] = sanitize($_POST['field-bio']);
+    $submission['fpls'] = array_map('sanitize', $_POST['field-pl']);
 
     return $submission;
 }

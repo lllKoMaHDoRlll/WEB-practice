@@ -19,26 +19,26 @@ function on_get()
         if (!empty($submission)) {
             $submission_id = $submission[0]["id"];
 
-            $values["name"] = strip_tags($submission[0]['name']);
-            $values["phone"] = strip_tags($submission[0]['phone']);
-            $values["email"] = strip_tags($submission[0]['email']);
-            $values["date"] = strip_tags($submission[0]['bdate']);
-            $values["gender"] = strip_tags($submission[0]['gender']);
-            $values["bio"] = strip_tags($submission[0]['bio']);
+            $values["name"] = sanitize($submission[0]['name']);
+            $values["phone"] = sanitize($submission[0]['phone']);
+            $values["email"] = sanitize($submission[0]['email']);
+            $values["date"] = sanitize($submission[0]['bdate']);
+            $values["gender"] = sanitize($submission[0]['gender']);
+            $values["bio"] = sanitize($submission[0]['bio']);
             
             $fpls = get_user_fpls($db, $submission_id);
-            $values["fpls"] = sprintf("@%s@", implode("@", $fpls));
+            $values["fpls"] = sprintf("@%s@", implode("@", array_map('sanitize', $fpls)));
 
         }
     }
     else {
-        $values["name"] = empty($_COOKIE['field-name']) ? '' : strip_tags($_COOKIE['field-name']);
-        $values["phone"] = empty($_COOKIE['field-phone']) ? '' : strip_tags($_COOKIE['field-phone']);
-        $values["email"] = empty($_COOKIE['field-email']) ? '' : strip_tags($_COOKIE['field-email']);
-        $values["date"] = empty($_COOKIE['field-date']) ? '' : strip_tags($_COOKIE['field-date']);
-        $values["gender"] = empty($_COOKIE['field-gender']) ? '' : (strip_tags($_COOKIE['field-gender']) == "male"? '1' : '0');
-        $values["fpls"] = empty($_COOKIE['field-pl']) ? '' : strip_tags($_COOKIE['field-pl']);
-        $values["bio"] = empty($_COOKIE['field-bio']) ? '' : strip_tags($_COOKIE['field-bio']);
+        $values["name"] = empty($_COOKIE['field-name']) ? '' : sanitize($_COOKIE['field-name']);
+        $values["phone"] = empty($_COOKIE['field-phone']) ? '' : sanitize($_COOKIE['field-phone']);
+        $values["email"] = empty($_COOKIE['field-email']) ? '' : sanitize($_COOKIE['field-email']);
+        $values["date"] = empty($_COOKIE['field-date']) ? '' : sanitize($_COOKIE['field-date']);
+        $values["gender"] = empty($_COOKIE['field-gender']) ? '' : (sanitize($_COOKIE['field-gender']) == "male"? '1' : '0');
+        $values["fpls"] = empty($_COOKIE['field-pl']) ? '' : sanitize($_COOKIE['field-pl']);
+        $values["bio"] = empty($_COOKIE['field-bio']) ? '' : sanitize($_COOKIE['field-bio']);
     }
 
     setcookie("login", "", 1);
