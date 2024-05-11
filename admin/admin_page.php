@@ -60,8 +60,9 @@
                         foreach ($submissions as $submission) {
                             echo '
                                 <div class="submission-item">
-                                    <form action="./index.php" method="POST">
-                                        <input type="text" name="user-id" value="'. sanitize($submission['user_id']) .'" hidden>
+                                    <form action="./index.php" method="POST">';
+                            echo isset($_SESSION['csrf_token']) ? '<input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '">' : '';
+                            echo '<input type="text" name="user-id" value="'. sanitize($submission['user_id']) .'" hidden>
                                         <input type="checkbox" name="check-accept" value="accepted" checked hidden>
                                         <div class="text-field-outter form-field">
                                             <label for="field-name">Name: </label>

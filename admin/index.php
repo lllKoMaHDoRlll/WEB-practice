@@ -13,6 +13,8 @@ function on_get()
         setcookie('action_status', '', 1);
     }
 
+    $_SESSION['csrf_token'] = generate_csrf_token();
+
     $db = connect_to_db();
     $submissions = get_form_submissions($db);
     $fpls_count = count_fpls($submissions);
@@ -22,6 +24,11 @@ function on_get()
 
 function on_post()
 {
+    if ($_SESSION['csrf_token'] != $_POST['csrf_token']) {
+        setcookie("action_status", "-4");
+        header("Location: ./");
+        exit();
+    }
     switch ($_POST['button-action']) {
         case "EDIT":
             if (!validate_fields()) {
@@ -59,6 +66,8 @@ if (
     print('<h1>401 Требуется авторизация</h1>');
     exit();
 }
+
+session_start();
 
 switch ($_SERVER["REQUEST_METHOD"]) {
     case "GET":

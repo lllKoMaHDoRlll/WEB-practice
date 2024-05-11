@@ -13,6 +13,9 @@ function on_get()
     }
     $values = array();
     if (!empty($_COOKIE[session_name()]) && session_start() && !empty($_SESSION['login'])) {
+
+        $_SESSION['csrf_token'] = generate_csrf_token();
+
         $user_id = $_SESSION['user_id'];
         $db = connect_to_db();
         $submission = get_user_form_submission($db, $user_id);

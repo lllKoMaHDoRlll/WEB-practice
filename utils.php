@@ -6,7 +6,8 @@ $STATUS_DESCRIPTION = array(
     "3" => "Form submission was successfully deleted.",
     "-1" => "An error was occured during validation.",
     "-2" => "An error was occured during connecting to the database.",
-    "-3"=> "An error was occured during sending data to the database.",
+    "-3" => "An error was occured during sending data to the database.",
+    "-4" => "Error: Invalid authorisation",
 );
 
 function parse_form_submission_from_post() {
@@ -32,6 +33,10 @@ function generate_password() {
 
 function get_password_hash($password) {
     return md5($password);
+}
+
+function generate_csrf_token() {
+    return md5(uniqid(mt_rand(), true));
 }
 
 function validate_fields_and_set_cookies()

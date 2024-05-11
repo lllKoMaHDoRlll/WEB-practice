@@ -13,6 +13,11 @@ $db = connect_to_db();
 $submission = parse_form_submission_from_post();
 
 if (!empty($_COOKIE[session_name()]) && session_start() && !empty($_SESSION['user_id']) && !empty($_SESSION['login'])) {
+    if ($_SESSION['csrf_token'] != $_POST['csrf_token']) {
+        setcookie("action_status", "-4");
+        header("Location: ./");
+        exit();
+    }
     update_sumbission_data($db, $_SESSION['user_id'], $submission);
 }
 else {

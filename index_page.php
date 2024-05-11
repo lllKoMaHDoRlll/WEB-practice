@@ -29,6 +29,9 @@
         <section id="form" class="container">
             <h2>Form</h2>
             <form action="./index.php" method="POST">
+                <?php
+                    print isset($_SESSION['csrf_token']) ? '<input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '">' : '';
+                ?>
                 <label>Name:
                     <input name="field-name" placeholder="Your name" type="text" <?php print empty($_COOKIE["field-name-error"]) ? '' : 'class="err_input"'; ?>
                         value="<?php print $values["name"] ?>">
